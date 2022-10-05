@@ -1,9 +1,20 @@
 import { Container } from "react-bootstrap";
 
 const Dashboard: React.FC = () => {
+  const waterArray = [0.5, 65.62, 67.01, 68.1, 69.45];
+  const warmWaterArray = [0.4, 36.91, 37.45, 37.84, 38.27];
+  const heatingArray = [57.1, 2523.6, 2523.6, 2523.6, 2523.6];
+
   return (
     <Container className="bg-white">
-      <h1>Dashboard</h1>
+      <div>
+        <h1>Dashboard</h1>
+        <div>
+          {waterArray.map((m) => {
+            return <div>{m}</div>;
+          })}
+        </div>
+      </div>
     </Container>
   );
 };

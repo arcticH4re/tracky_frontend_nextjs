@@ -11,6 +11,7 @@ import {
   ABOUT_PAGE,
   DASHBOARD_PAGE,
   CONTACT_PAGE,
+  PROFILE_PAGE,
 } from "../../../urls/in_app_urls";
 
 const MainNavigation = () => {
@@ -39,6 +40,9 @@ const MainNavigation = () => {
           <Nav className="mr-1 ml-auto">
             <Nav.Item className="flex items-end ml-2 mb-1 text-sm">
               <Link href={DASHBOARD_PAGE}>Dashboard</Link>
+            </Nav.Item>
+            <Nav.Item className="flex items-end ml-2 mb-1 text-sm">
+              <Link href={PROFILE_PAGE}>Profile</Link>
             </Nav.Item>
             <Nav.Item className="flex items-end ml-2 mb-1 text-sm">
               <Link href={ABOUT_PAGE}>About</Link>
