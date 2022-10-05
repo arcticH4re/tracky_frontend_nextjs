@@ -1,4 +1,5 @@
 import { Container } from "react-bootstrap";
+import DashboardForm from "./DashboardForm";
 
 const Dashboard: React.FC = () => {
   const waterArray = [0.5, 65.62, 67.01, 68.1, 69.45];
@@ -15,6 +16,7 @@ const Dashboard: React.FC = () => {
           })}
         </div>
       </div>
+      <DashboardForm />
     </Container>
   );
 };
