@@ -30,7 +30,20 @@ const Dashboard: React.FC = () => {
   const warmWaterArray = [0.4, 36.91, 37.45, 37.84, 38.27];
   const heatingArray = [57.1, 2523.6, 2523.6, 2523.6, 2523.6];
 
-  const labelArray = ["1", "2", "3", "4", "5"];
+  const labelArray = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
   const chartData = {
     labels: labelArray,
@@ -38,6 +51,20 @@ const Dashboard: React.FC = () => {
       {
         label: "My First Dataset",
         data: waterArray,
+        fill: true,
+        borderColor: "rgb(95, 102, 132)",
+        tension: 0.1,
+      },
+      {
+        label: "My First Dataset",
+        data: warmWaterArray,
+        fill: true,
+        borderColor: "rgb(75, 122, 192)",
+        tension: 0.1,
+      },
+      {
+        label: "My First Dataset",
+        data: heatingArray,
         fill: true,
         borderColor: "rgb(75, 192, 192)",
         tension: 0.1,

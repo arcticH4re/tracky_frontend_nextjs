@@ -29,6 +29,10 @@ function DashboardForm() {
             <option value="3">Three</option>
           </Form.Select>
         </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Date</Form.Label>
+          <Form.Control type="date" min="2022-01-01" max="2022-12-31" />
+        </Form.Group>
         <Form.Group className="mb-3"></Form.Group>
         <Button variant="dark" type="submit">
           Submit
