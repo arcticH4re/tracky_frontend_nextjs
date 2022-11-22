@@ -1,13 +1,24 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import React, { useState } from "react";
 
 function DashboardForm() {
+  const [input, setInput] = useState("");
+
+  function inputHandler(evt) {
+    setInput(evt.target.value);
+  }
+
   return (
     <Form>
       <fieldset className="mt-5">
         <Form.Group className="mb-3">
           <Form.Label>Input</Form.Label>
-          <Form.Control id="TextInput" placeholder="input" />
+          <Form.Control
+            onChange={inputHandler}
+            id="TextInput"
+            placeholder="input"
+          />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Select</Form.Label>
@@ -19,9 +30,12 @@ function DashboardForm() {
           </Form.Select>
         </Form.Group>
         <Form.Group className="mb-3"></Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="dark" type="submit">
           Submit
         </Button>
+        <div>
+          <p>{input}</p>
+        </div>
       </fieldset>
     </Form>
   );

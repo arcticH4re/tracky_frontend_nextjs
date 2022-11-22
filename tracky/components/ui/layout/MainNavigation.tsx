@@ -4,6 +4,7 @@ import Image from "next/image";
 
 // react imports
 import { Container, Navbar, Nav } from "react-bootstrap";
+import classes from "../../../styles/MainNavigation.module.css";
 
 // urls
 import {
@@ -25,7 +26,7 @@ const MainNavigation = () => {
               className="mr-3 sm:h-9 border-4 border-black rounded-full"
               width={40}
               height={40}
-              alt="Gergo"
+              alt="logo"
             />
             <Container className="flex items-end mx-2 text-sm text-white">
               trackiE
@@ -37,18 +38,26 @@ const MainNavigation = () => {
           data-bs-target="#navbarScroll"
         />
         <Navbar.Collapse id="navbarScroll">
-          <Nav className="mr-1 ml-auto">
+          <Nav className="me-4 ml-auto">
             <Nav.Item className="flex items-end ml-2 mb-1 text-sm">
-              <Link href={DASHBOARD_PAGE}>Dashboard</Link>
+              <Link href={DASHBOARD_PAGE}>
+                <a className="text-white no-underline">Dashboard</a>
+              </Link>
             </Nav.Item>
             <Nav.Item className="flex items-end ml-2 mb-1 text-sm">
-              <Link href={PROFILE_PAGE}>Profile</Link>
+              <Link href={PROFILE_PAGE}>
+                <a className="text-white no-underline">Profile</a>
+              </Link>
             </Nav.Item>
             <Nav.Item className="flex items-end ml-2 mb-1 text-sm">
-              <Link href={ABOUT_PAGE}>About</Link>
+              <Link href={ABOUT_PAGE}>
+                <a className="text-white no-underline">About</a>
+              </Link>
             </Nav.Item>
             <Nav.Item className="flex items-end ml-2 mb-1 text-sm">
-              <Link href={CONTACT_PAGE}>Contact</Link>
+              <Link href={CONTACT_PAGE}>
+                <a className="text-white no-underline">Contact</a>
+              </Link>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
