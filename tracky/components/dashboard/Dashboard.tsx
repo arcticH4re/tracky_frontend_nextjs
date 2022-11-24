@@ -39,10 +39,6 @@ const WATER = [
     amount: 0.5,
     date: new Date(2022, 3, 3),
   },
-  {
-    amount: 65.62,
-    date: new Date(2022, 3, 3),
-  },
 ];
 
 const WARM_WATER = [
@@ -133,11 +129,25 @@ const Dashboard: React.FC = () => {
       });
     } else if (formData.metric === "Warm Water") {
       setWarmWater((prevFormData) => {
-        return [...prevFormData, formData];
+        const { amount, date } = formData;
+        return [
+          ...prevFormData,
+          {
+            amount: +amount,
+            date,
+          },
+        ];
       });
     } else {
       setHeating((prevFormData) => {
-        return [...prevFormData, formData];
+        const { amount, date } = formData;
+        return [
+          ...prevFormData,
+          {
+            amount: +amount,
+            date,
+          },
+        ];
       });
     }
   };
@@ -157,30 +167,35 @@ const Dashboard: React.FC = () => {
   return (
     <Container className="bg-white">
       <div>
-        <h1>Dashboard</h1>
-        {/* <div>
-          {waterArray.map((m) => {
-            return <div>{m}</div>;
-          })}
-        </div> */}
+        <h1 className="mb-4">MY CONSUMPTION</h1>
         <div>
+          WATER
           {water.map((m) => {
-            return <div>{m.amount}</div>;
-          })}
-        </div>
-        <div>
-          {warmWater.map((m) => {
             return (
               <div>
-                {m.amount}
-                {m.date.toString()}
+                {m.amount} {m.date.toString()}
               </div>
             );
           })}
         </div>
         <div>
+          WARM WATER
+          {warmWater.map((m) => {
+            return (
+              <div>
+                {m.amount} {m.date.toString()}
+              </div>
+            );
+          })}
+        </div>
+        <div>
+          HEATING
           {heating.map((m) => {
-            return <div>{m.amount}</div>;
+            return (
+              <div>
+                {m.amount} {m.date.toString()}
+              </div>
+            );
           })}
         </div>
       </div>
