@@ -38,14 +38,6 @@ function DashboardForm(props) {
     <Form onSubmit={submitHandler}>
       <fieldset className="mt-5">
         <Form.Group className="mb-3">
-          <Form.Label>Add Amount</Form.Label>
-          <Form.Control
-            onChange={inputHandler}
-            id="NumberInput"
-            value={input}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
           <Form.Label>Type</Form.Label>
           <Form.Select
             aria-label="Select Type"
@@ -68,9 +60,17 @@ function DashboardForm(props) {
             value={dateInput}
           />
         </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Add Amount</Form.Label>
+          <Form.Control
+            onChange={inputHandler}
+            id="NumberInput"
+            value={input}
+          />
+        </Form.Group>
         <Form.Group className="mb-3"></Form.Group>
         <Button variant="dark" type="submit">
-          Submit
+          Add
         </Button>
         <div>
           <p>{input}</p>

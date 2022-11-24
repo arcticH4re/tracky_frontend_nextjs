@@ -34,26 +34,35 @@ ChartJS.register(
   Legend
 );
 
-const DUMMY_ENERGY = [
+const WATER = [
   {
-    metric: "Water",
     amount: 0.5,
     date: new Date(2022, 3, 3),
   },
   {
-    metric: "Warm Water",
-    amount: 0.4,
-    date: new Date(2022, 2, 17),
+    amount: 65.62,
+    date: new Date(2022, 3, 3),
   },
+];
+
+const WARM_WATER = [
   {
-    metric: "Heating",
+    amount: 0.4,
+    date: new Date(2022, 11, 28),
+  },
+];
+
+const HEATING = [
+  {
     amount: 57.1,
-    date: new Date(2022, 6, 21),
+    date: new Date(2022, 5, 13),
   },
 ];
 
 const Dashboard: React.FC = () => {
-  const [energy, setEnergy] = useState(DUMMY_ENERGY);
+  const [water, setWater] = useState(WATER);
+  const [warmWater, setWarmWater] = useState(WARM_WATER);
+  const [heating, setHeating] = useState(HEATING);
 
   const waterArray = [0.5, 65.62, 67.01, 68.1, 69.45];
   const warmWaterArray = [0.4, 36.91, 37.45, 37.84, 38.27];
@@ -106,11 +115,31 @@ const Dashboard: React.FC = () => {
       ...submittedFormData,
       id: Math.random().toString(),
     };
-    setEnergy((prevFormData) => {
-      return [...prevFormData, formData];
-    });
 
-    console.log(energy);
+    console.log(water);
+    console.log(warmWater);
+    console.log(heating);
+
+    if (formData.metric === "Cold Water") {
+      setWater((prevFormData) => {
+        const { amount, date } = formData;
+        return [
+          ...prevFormData,
+          {
+            amount: +amount,
+            date,
+          },
+        ];
+      });
+    } else if (formData.metric === "Warm Water") {
+      setWarmWater((prevFormData) => {
+        return [...prevFormData, formData];
+      });
+    } else {
+      setHeating((prevFormData) => {
+        return [...prevFormData, formData];
+      });
+    }
   };
 
   // const data = {
@@ -129,19 +158,29 @@ const Dashboard: React.FC = () => {
     <Container className="bg-white">
       <div>
         <h1>Dashboard</h1>
-        <div>
+        {/* <div>
           {waterArray.map((m) => {
             return <div>{m}</div>;
           })}
+        </div> */}
+        <div>
+          {water.map((m) => {
+            return <div>{m.amount}</div>;
+          })}
         </div>
         <div>
-          {energy.map((m) => {
+          {warmWater.map((m) => {
             return (
               <div>
-                {m.metric}
                 {m.amount}
+                {m.date.toString()}
               </div>
             );
+          })}
+        </div>
+        <div>
+          {heating.map((m) => {
+            return <div>{m.amount}</div>;
           })}
         </div>
       </div>
