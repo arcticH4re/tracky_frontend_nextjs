@@ -116,28 +116,53 @@ const Dashboard: React.FC = () => {
     "Dec",
   ];
 
-  const chartData = {
+  const waterData = {
     labels: labelArray,
     datasets: [
       {
         label: "My First Dataset",
-        data: WATER.map((w) => w.amount),
+        data: water.map((w) => w.amount),
         fill: true,
-        borderColor: "rgb(1335, 102, 132)",
+        borderColor: "black",
         tension: 0.1,
       },
+    ],
+  };
+
+  const warmWaterData = {
+    labels: labelArray,
+    datasets: [
       {
         label: "My First Dataset",
-        data: WARM_WATER.map((w) => w.amount),
+        data: warmWater.map((w) => w.amount),
         fill: true,
-        borderColor: "rgb(95, 22, 192)",
+        borderColor: "red",
         tension: 0.1,
       },
+    ],
+  };
+
+  const heatingData = {
+    labels: labelArray,
+    datasets: [
       {
         label: "My First Dataset",
-        data: HEATING.map((w) => w.amount),
+        data: heating.map((w) => w.amount),
         fill: true,
-        borderColor: "rgb(75, 192, 192)",
+        borderColor: "yellow",
+        tension: 0.1,
+      },
+    ],
+  };
+
+  const eData = {
+    labels: labelArray,
+    datasets: [
+      {
+        label: "My First Dataset",
+        data: heating.map((w) => w.amount),
+        fill: true,
+        borderColor: "blue",
         tension: 0.1,
       },
     ],
@@ -148,10 +173,6 @@ const Dashboard: React.FC = () => {
       ...submittedFormData,
       id: Math.random().toString(),
     };
-
-    console.log(water);
-    console.log(warmWater);
-    console.log(heating);
 
     if (formData.metric === "Cold Water") {
       setWater((prevFormData) => {
@@ -225,9 +246,12 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
       <DashboardForm onSubmitData={submitDataHandler} />
-      <MonthlyChart data={chartData} className="max-w-lg" />
-      <MonthlyChart data={chartData} className="max-w-lg" />
-      <MonthlyChart data={chartData} className="max-w-lg" />
+      <div className="grid grid-cols-2 gap-2">
+        <MonthlyChart data={waterData} className="max-w-lg" />
+        <MonthlyChart data={warmWaterData} className="max-w-lg" />
+        <MonthlyChart data={heatingData} className="max-w-lg" />
+        <MonthlyChart data={eData} className="max-w-lg" />
+      </div>
     </Container>
   );
 };
