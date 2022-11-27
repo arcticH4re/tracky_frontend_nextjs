@@ -2,6 +2,8 @@ import { Container } from "react-bootstrap";
 import DashboardForm from "./DashboardForm";
 import React, { useState } from "react";
 
+import Chart from "chart.js/auto";
+
 const WATER = [
   {
     amount: 0.5,
