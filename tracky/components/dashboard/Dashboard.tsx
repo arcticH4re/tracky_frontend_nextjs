@@ -4,14 +4,6 @@ import React, { useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
 
-// import {
-//   Charts,
-//   ChartContainer,
-//   ChartRow,
-//   YAxis,
-//   LineChart,
-// } from "react-timeseries-charts";
-
 Chart.register(ArcElement);
 import {
   Chart as ChartJS,
@@ -33,8 +25,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
-import Chart from "chart.js/auto";
 
 const WATER = [
   {
@@ -154,18 +144,6 @@ const Dashboard: React.FC = () => {
     }
   };
 
-  // const data = {
-  //   name: "trafficc",
-  //   columns: ["time", "value"],
-  //   points: [
-  //     [1400425947000, 52],
-  //     [1400425948000, 18],
-  //     [1400425949000, 26],
-  //     [1400425950000, 93],
-  //   ],
-  // };
-  // const timerange = new TimeSeries(data);
-
   return (
     <Container className="bg-white">
       <div>
@@ -202,20 +180,6 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
       <DashboardForm onSubmitData={submitDataHandler} />
-      {/* <ChartContainer timeRange={timerange}>
-        <ChartRow height="200">
-          <YAxis id="y" label="Price ($)" min={0.5} max={1.5} format="$,.2f" />
-          <Charts>
-            <LineChart
-              axis="y"
-              breakLine={false}
-              series={waterArray}
-              columns={["aud", "euro"]}
-              interpolation="curveBasis"
-            />
-          </Charts>
-        </ChartRow>
-      </ChartContainer> */}
       <Line data={chartData} className="max-w-lg" />
     </Container>
   );
