@@ -15,6 +15,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from "chart.js";
 
 ChartJS.register(
@@ -22,6 +23,7 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
+  Filler,
   Title,
   Tooltip,
   Legend
@@ -120,11 +122,8 @@ const Dashboard: React.FC = () => {
     labels: labelArray,
     datasets: [
       {
-        label: "My First Dataset",
+        label: "Cold water consumption",
         data: water.map((w) => w.amount),
-        fill: true,
-        borderColor: "black",
-        tension: 0.1,
       },
     ],
   };
@@ -133,11 +132,8 @@ const Dashboard: React.FC = () => {
     labels: labelArray,
     datasets: [
       {
-        label: "My First Dataset",
+        label: "Warm water consumption",
         data: warmWater.map((w) => w.amount),
-        fill: true,
-        borderColor: "red",
-        tension: 0.1,
       },
     ],
   };
@@ -146,11 +142,8 @@ const Dashboard: React.FC = () => {
     labels: labelArray,
     datasets: [
       {
-        label: "My First Dataset",
+        label: "Heating consumption",
         data: heating.map((w) => w.amount),
-        fill: true,
-        borderColor: "yellow",
-        tension: 0.1,
       },
     ],
   };
@@ -159,13 +152,46 @@ const Dashboard: React.FC = () => {
     labels: labelArray,
     datasets: [
       {
-        label: "My First Dataset",
+        label: "Energy consumption",
         data: heating.map((w) => w.amount),
-        fill: true,
-        borderColor: "blue",
-        tension: 0.1,
       },
     ],
+  };
+
+  const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    elements: {
+      line: {
+        tension: 0.7,
+        borderWidth: 2.5,
+        borderColor: "rgb(137,207,240)",
+        fill: "start",
+        backgroundColor: "rgb(137,207,240, 0.3)",
+      },
+      point: {
+        radius: 2,
+        hitRadius: 6,
+        borderWidth: 2.5,
+        borderColor: "rgb(137,207,240)",
+        backgroundColor: "rgb(137,207,240)",
+      },
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+      y: {
+        grid: {
+          display: false,
+        },
+      },
+    },
   };
 
   const submitDataHandler = (submittedFormData) => {
@@ -246,11 +272,11 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
       <DashboardForm onSubmitData={submitDataHandler} />
-      <div className="grid grid-cols-2 gap-2">
-        <MonthlyChart data={waterData} className="max-w-lg" />
-        <MonthlyChart data={warmWaterData} className="max-w-lg" />
-        <MonthlyChart data={heatingData} className="max-w-lg" />
-        <MonthlyChart data={eData} className="max-w-lg" />
+      <div className="grid grid-cols-2 justify-center gap-4">
+        <MonthlyChart data={waterData} options={options} />
+        <MonthlyChart data={warmWaterData} options={options} />
+        <MonthlyChart data={heatingData} options={options} />
+        <MonthlyChart data={eData} options={options} />
       </div>
     </Container>
   );

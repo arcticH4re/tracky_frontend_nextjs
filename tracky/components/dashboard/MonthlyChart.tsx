@@ -1,5 +1,3 @@
-import { Container } from "react-bootstrap";
-import DashboardForm from "./DashboardForm";
 import React, { useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
@@ -14,6 +12,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from "chart.js";
 
 ChartJS.register(
@@ -21,13 +20,20 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
+  Filler,
   Title,
   Tooltip,
   Legend
 );
 
 function MonthlyChart(props) {
-  return <Line data={props.data} className="max-w-lg" />;
+  return (
+    <Line
+      data={props.data}
+      options={props.options}
+      className="max-w-md max-h-80"
+    />
+  );
 }
 
 export default MonthlyChart;
