@@ -3,7 +3,8 @@ import DashboardForm from "./DashboardForm";
 import React, { useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
-import MonthlyChart from "./MonthlyChart";
+import MonthlyChart from "../charts/MonthlyChart";
+import Link from "next/link";
 
 Chart.register(ArcElement);
 import {
@@ -17,6 +18,7 @@ import {
   Legend,
   Filler,
 } from "chart.js";
+import { WATER_PAGE } from "../../urls/in_app_urls";
 
 ChartJS.register(
   CategoryScale,
@@ -243,7 +245,11 @@ const Dashboard: React.FC = () => {
       </div>
       <div className="grid grid-cols-3 gap-2 justify-items-center">
         <div className="grid grid-cols-2 col-span-2 gap-4">
-          <MonthlyChart data={waterData} options={options} />
+          <Link href={WATER_PAGE}>
+            <a className="no-underline">
+              <MonthlyChart data={waterData} options={options} />
+            </a>
+          </Link>
           <MonthlyChart data={warmWaterData} options={options} />
           <MonthlyChart data={heatingData} options={options} />
           <MonthlyChart data={eData} options={options} />
