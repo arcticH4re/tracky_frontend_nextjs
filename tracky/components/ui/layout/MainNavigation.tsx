@@ -17,7 +17,7 @@ import {
 
 const MainNavigation = () => {
   return (
-    <Container className="max-w-full">
+    <div className="max-w-full">
       <Navbar bg="dark" variant="dark" expand="sm">
         <Navbar.Brand href={HOME_PAGE}>
           <Container className="flex flex-row">
@@ -62,7 +62,7 @@ const MainNavigation = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    </Container>
+    </div>
   );
 };
 

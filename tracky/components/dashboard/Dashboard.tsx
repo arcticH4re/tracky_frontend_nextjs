@@ -183,12 +183,12 @@ const Dashboard: React.FC = () => {
     scales: {
       x: {
         grid: {
-          display: false,
+          color: "rgba(211, 211, 211, 0.3)",
         },
       },
       y: {
         grid: {
-          display: false,
+          color: "rgba(211, 211, 211, 0.3)",
         },
       },
     },
@@ -240,43 +240,18 @@ const Dashboard: React.FC = () => {
     <Container className="bg-white">
       <div>
         <h1 className="mb-4">MY CONSUMPTION</h1>
-        <div>
-          WATER
-          {water.map((m) => {
-            return (
-              <div>
-                {m.amount} {m.date.toString()}
-              </div>
-            );
-          })}
-        </div>
-        <div>
-          WARM WATER
-          {warmWater.map((m) => {
-            return (
-              <div>
-                {m.amount} {m.date.toString()}
-              </div>
-            );
-          })}
-        </div>
-        <div>
-          HEATING
-          {heating.map((m) => {
-            return (
-              <div>
-                {m.amount} {m.date.toString()}
-              </div>
-            );
-          })}
-        </div>
       </div>
-      <DashboardForm onSubmitData={submitDataHandler} />
-      <div className="grid grid-cols-2 justify-center gap-4">
-        <MonthlyChart data={waterData} options={options} />
-        <MonthlyChart data={warmWaterData} options={options} />
-        <MonthlyChart data={heatingData} options={options} />
-        <MonthlyChart data={eData} options={options} />
+      <div className="grid grid-cols-3 gap-2 justify-items-center">
+        <div className="grid grid-cols-2 col-span-2 gap-4">
+          <MonthlyChart data={waterData} options={options} />
+          <MonthlyChart data={warmWaterData} options={options} />
+          <MonthlyChart data={heatingData} options={options} />
+          <MonthlyChart data={eData} options={options} />
+        </div>
+        <DashboardForm
+          onSubmitData={submitDataHandler}
+          className="col-span-1"
+        />
       </div>
     </Container>
   );

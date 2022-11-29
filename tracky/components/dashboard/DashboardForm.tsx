@@ -35,7 +35,7 @@ function DashboardForm(props) {
   }
 
   return (
-    <Form onSubmit={submitHandler}>
+    <Form onSubmit={submitHandler} className="w-40 mt-28">
       <fieldset className="mt-5">
         <Form.Group className="mb-3">
           <Form.Label>Type</Form.Label>
@@ -72,9 +72,6 @@ function DashboardForm(props) {
         <Button variant="dark" type="submit">
           Add
         </Button>
-        <div>
-          <p>{input}</p>
-        </div>
       </fieldset>
     </Form>
   );

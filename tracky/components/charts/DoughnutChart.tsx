@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Line } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
 
 Chart.register(ArcElement);
@@ -26,9 +26,9 @@ ChartJS.register(
   Legend
 );
 
-function MonthlyChart(props) {
+function DoughnutChart(props) {
   return (
-    <Line
+    <Doughnut
       data={props.data}
       options={props.options}
       className="max-w-sm max-h-80"
@@ -36,4 +36,4 @@ function MonthlyChart(props) {
   );
 }
 
-export default MonthlyChart;
+export default DoughnutChart;

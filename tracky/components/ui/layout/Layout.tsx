@@ -7,13 +7,11 @@ import Footer from "./Footer";
 
 const Layout: React.FC<{ children: any }> = (props) => {
   return (
-    <Container className="rounded-md max-w-full">
+    <div className="rounded-md max-w-full m-0">
       <MainNavigation />
-      <Container className="flex m-2 min-h-screen max-w-full">
-        {props.children}
-      </Container>
+      <div className="min-h-screen max-w-full m-0 p-0">{props.children}</div>
       <Footer />
-    </Container>
+    </div>
   );
 };
 
