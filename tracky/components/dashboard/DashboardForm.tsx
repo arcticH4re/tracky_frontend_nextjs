@@ -2,44 +2,76 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import React, { useState } from "react";
 
-function DashboardForm() {
+function DashboardForm(props) {
   const [input, setInput] = useState("");
+  const [metricInput, setMetricInput] = useState("");
+  const [dateInput, setDateInput] = useState("");
 
-  function inputHandler(evt) {
-    setInput(evt.target.value);
+  function inputHandler(event) {
+    setInput(event.target.value);
+  }
+
+  function metricInputHandler(event) {
+    setMetricInput(event.target.value);
+  }
+
+  function dateInputHandler(event) {
+    setDateInput(event.target.value);
+  }
+
+  function submitHandler(event) {
+    event.preventDefault();
+
+    const formData = {
+      amount: input,
+      metric: metricInput,
+      date: new Date(dateInput),
+    };
+
+    props.onSubmitData(formData);
+    setInput("");
+    setMetricInput("");
+    setDateInput("");
   }
 
   return (
-    <Form>
+    <Form onSubmit={submitHandler} className="w-40 mt-28">
       <fieldset className="mt-5">
         <Form.Group className="mb-3">
-          <Form.Label>Input</Form.Label>
-          <Form.Control
-            onChange={inputHandler}
-            id="TextInput"
-            placeholder="input"
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Select</Form.Label>
-          <Form.Select aria-label="Select Type">
-            <option>Select Type</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+          <Form.Label>Type</Form.Label>
+          <Form.Select
+            aria-label="Select Type"
+            onChange={metricInputHandler}
+            value={metricInput}
+          >
+            <option>Select</option>
+            <option value="Warm Water">Warm Water</option>
+            <option value="Cold Water">Cold Water</option>
+            <option value="Heating">Heating</option>
           </Form.Select>
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Date</Form.Label>
-          <Form.Control type="date" min="2022-01-01" max="2022-12-31" />
+          <Form.Control
+            type="date"
+            min="2022-01-01"
+            max="2022-12-31"
+            onChange={dateInputHandler}
+            value={dateInput}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Add Amount</Form.Label>
+          <Form.Control
+            onChange={inputHandler}
+            id="NumberInput"
+            value={input}
+          />
         </Form.Group>
         <Form.Group className="mb-3"></Form.Group>
         <Button variant="dark" type="submit">
           Add
         </Button>
-        <div>
-          <p>{input}</p>
-        </div>
       </fieldset>
     </Form>
   );
