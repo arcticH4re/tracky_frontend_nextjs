@@ -9,7 +9,7 @@ const Layout: React.FC<{ children: any }> = (props) => {
   return (
     <Container className="rounded-md max-w-full">
       <MainNavigation />
-      <Container className="flex m-2 min-h-screen max-w-full">
+      <Container className="m-2 min-h-screen max-w-full">
         {props.children}
       </Container>
       <Footer />

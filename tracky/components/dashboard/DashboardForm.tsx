@@ -35,7 +35,7 @@ function DashboardForm() {
         </Form.Group>
         <Form.Group className="mb-3"></Form.Group>
         <Button variant="dark" type="submit">
-          Submit
+          Add
         </Button>
         <div>
           <p>{input}</p>
