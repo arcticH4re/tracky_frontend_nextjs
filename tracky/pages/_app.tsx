@@ -4,9 +4,19 @@ import type { AppProps } from "next/app";
 
 // react imports
 import React from "react";
+import { ToastContainer } from "react-toastify";
 
 // custom components
 import Layout from "../components/ui/layout/Layout";
+
+// store
+import { Provider } from "react-redux";
+import { store } from "../store/store";
+
+// other
+import axios from "axios";
+
+axios.defaults.baseURL = "http://127.0.0.1:8000";
 
 // styles
 import "bootstrap/dist/css/bootstrap.css";
@@ -14,7 +24,7 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <React.Fragment>
+    <Provider store={store}>
       <Head>
         <title>trackiE</title>
         <link rel="icon" href="/favicon.ico" />
@@ -26,7 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </React.Fragment>
+    </Provider>
   );
 }
 
